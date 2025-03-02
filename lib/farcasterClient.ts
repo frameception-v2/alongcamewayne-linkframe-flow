@@ -1,4 +1,3 @@
-import axios from "axios";
 
 // Temporary mock data until real API integration
 const MOCK_CASTS = [
