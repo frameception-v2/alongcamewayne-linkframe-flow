@@ -1,14 +1,21 @@
 import { NextResponse } from "next/server";
 
 export const GET = () => {
-  // Basic frame definition with 4 buttons
+  // Process static links from environment
+  const staticLinks = process.env.STATIC_LINKS?.split(',').map(link => {
+    const [type, url] = link.split(':');
+    return { 
+      label: type === 'fc' ? 'Farcaster' : 'GitHub', 
+      action: "link" as const,
+      target: url
+    };
+  }) || [];
+
+  // Frame definition with combined buttons
   const frameResponse = {
-    image: "https://placeholder.com/frame-image", // Default image URL
+    image: "https://placeholder.com/frame-image",
     buttons: [
-      { label: "Button 1", action: "post" },
-      { label: "Button 2", action: "post" },
-      { label: "Button 3", action: "post" },
-      { label: "Button 4", action: "post" }
+      ...staticLinks.slice(0, 4) // Max 4 buttons supported by Farcaster
     ]
   };
 
