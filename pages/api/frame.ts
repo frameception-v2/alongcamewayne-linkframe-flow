@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { fetchRecentLinks } from "../../../lib/farcasterClient";
+import { fetchRecentLinks } from "../../lib/farcasterClient";
 
 // Type for frame buttons
 type Button = {
