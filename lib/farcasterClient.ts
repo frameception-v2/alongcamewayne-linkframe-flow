@@ -2,7 +2,9 @@
 // Temporary mock data until real API integration
 const MOCK_CASTS = [
   { text: "Check out https://example.com and http://test.org" },
-  { text: "Visit https://awesome-project.dev for details" }
+  { text: "Visit https://awesome-project.dev for details" },
+  { text: "New feature: https://new-feature.demo" },
+  { text: "Documentation at https://docs.example.org" }
 ];
 
 export const fetchRecentLinks = async (): Promise<string[]> => {

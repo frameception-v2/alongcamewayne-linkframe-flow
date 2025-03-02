@@ -22,15 +22,15 @@ export const GET = async () => {
   // Get dynamic links from Farcaster
   const dynamicLinks = await fetchRecentLinks();
   
-  // Merge links ensuring max 4 buttons total
+  // Merge links ensuring max 4 buttons total with priority to static links
   const buttons: Button[] = [
-    ...staticLinks.slice(0, 3), // Leave space for at least 1 dynamic link
+    ...staticLinks.slice(0, 3), // Reserve first 3 slots for static links
     ...dynamicLinks.slice(0, 1).map(url => ({
       label: "Dynamic Link",
       action: "link" as const,
       target: url
     }))
-  ].slice(0, 4); // Enforce max 4 buttons
+  ].slice(0, 4); // Enforce maximum of 4 buttons total
 
   // Frame definition with combined buttons
   const frameResponse = {
